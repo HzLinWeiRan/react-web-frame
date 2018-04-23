@@ -6,24 +6,24 @@ import { connect } from 'react-redux';
 import './styles/App.scss';
 import routes from './routes';
 import RouteWithSubRoutes from './components/routeWithSubRoutes';
-import Loading from './components/loading';
+// import Loading from './components/loading';
 
-function App({ visiable }) {
-    return (<div>
-        <Router>
-            <Switch>
-                {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
-                <Redirect from="/news" to="/news/features" />
-            </Switch>
-        </Router>
-        <Loading visiable={visiable} ></Loading>
-    </div>);
+function App() {
+    return (
+        <div>
+            <Router>
+                <Switch>
+                    {routes.map(route => <RouteWithSubRoutes {...route} key={route.path} />)}
+                    <Redirect from="/news" to="/news/features" />
+                </Switch>
+            </Router>
+        </div>);
 }
 
-function mapStateToProps(state) {
-    return {
-        visiable: state.root.visiable
-    };
-}
+// function mapStateToProps(state) {
+//     return {
+//         visiable: state.root.visiable
+//     };
+// }
 
-export default connect(mapStateToProps)(App);
+export default connect()(App);

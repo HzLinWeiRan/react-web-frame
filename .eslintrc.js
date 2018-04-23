@@ -18,30 +18,13 @@ module.exports = {
   'rules': {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-    'no-console': 0,
+    'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
+    'comma-dangle': 0,
     indent: [2, 4],
-    'linebreak-style': 0,
-    'no-mixed-operators': 0,
-    'react/jsx-indent': [2, 4],
-    'react/self-closing-comp': 0,
-    'react/jsx-filename-extension': [1, { "extensions": ['.js', '.jsx'] }],
-    'react/jsx-indent-props': [2, 4],
-    'react/no-array-index-key': 0,
-    'react/jsx-closing-tag-location': 0,
-    'react/prop-types': 0,
-    'react/jsx-wrap-multilines': 0,
-    'react/no-danger': 0,
-    'react/prefer-stateless-function': 0,
-    'jsx-a11y/anchor-is-valid': 0,
     'import/extensions': 0,
     'import/no-unresolved': 0,
-    'comma-dangle': 0,
-    'max-len': 0,
-    'jsx-a11y/anchor-is-valid': 0,
-    'no-script-url': 0,
-    'jsx-a11y/click-events-have-key-events': 0,
-    'jsx-a11y/no-static-element-interactions': 0,
-    'jsx-a11y/no-noninteractive-element-interactions': 0,
-    'no-lonely-if': 0
+    'react/jsx-indent': [2, 4],
+    'react/jsx-indent-props': [2, 4],
+    'react/jsx-filename-extension': ['js', 'jsx']
   }
 }
