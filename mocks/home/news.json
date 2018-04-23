@@ -1,0 +1,30 @@
+{
+    "code": 0,
+    "message": null,
+    "data": {
+        "leftNews": {
+            "id": 42,
+            "title": "澳洲证监会前主席：方图正在做我们十年都没做成的事",
+            "subTitle": "3月14日，墨尔本当地时间上午10点，方图产品总监Z.T.栾作天在澳大利亚APAC区块链峰会上发表演讲。澳洲证监会前主席高度评价了栾作天演讲的专业性和清晰度，并表示：方图在做的事情是他们做了10年都没做成的事情，现在看来有望能用区块链解决。",
+            "picUrl": "http://fortuna-public.s3.amazonaws.com/20180413104316b024dbfd微信图片_20180320154840 (已调整大小).png",
+            "actionUrl": "http://mp.weixin.qq.com/s/nxVVtA_ZruNe457VEKI-hQ"
+        },
+        "rightNews": [
+            {
+                "id": 43,
+                "title": "FORTUNA方图受迪拜王子之邀共建中东场外衍生品交易市场",
+                "subTitle": "2017年12月13-14日，FORTUNA方图创始人Brian及运营总监Sophie一行人在迪拜会见了迪拜王子兼International Center of Islamic Economy (ICIE) 首席执行官Mr. Sultan Mohammed Al Howymel、当地某石油公司董事长、伊斯兰经济学教授Prof. Dr. Abdussalam Ismail Onagun、Fintech创业家以及其它个人投资者。",
+                "picUrl": "http://fortuna-public.s3.amazonaws.com/20180413104423cd771ef020171213方图受迪拜王子之邀共建中东场外衍生品交易市场 (已调整大小).png",
+                "actionUrl": "http://mp.weixin.qq.com/s/Sf5QaQNeg9lPPE1lP8BDaQ"
+            },
+            {
+                "id": 44,
+                "title": "方图创始人Finwise澳门峰会公开演讲火爆被围",
+                "subTitle": "1月12号-13号，一年一度的行业盛会【Finwise 纷智·区块链全球峰会】在澳门喜来登金沙城中心大酒店举行。方图创始人蔡良滨就《方图：全球首个分布式风险对冲区块链》为主题发表演讲，介绍了Fortuna将如何引领衍生品交易市场的时代变革。",
+                "picUrl": "http://fortuna-public.s3.amazonaws.com/2018041310451813499d8a20180112方图创始人Finwise澳门峰会公开演讲 (已调整大小).png",
+                "actionUrl": "https://mp.weixin.qq.com/s/bUm04XKPTrhNFMRIxyNzXQ"
+            }
+        ]
+    },
+    "success": true
+}
