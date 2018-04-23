@@ -1,3 +1,4 @@
+.vscode
 build/*.js
 config/*.js
 node_modules/**/*.js
