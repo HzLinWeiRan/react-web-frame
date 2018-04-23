@@ -7,7 +7,9 @@ if (!process.env.NODE_ENV) {
 
 const opn = require('opn')
 const path = require('path')
-const express = require('express')
+const Koa = require('koa')
+const koaStatic = require('koa-static')
+const mount = require('koa-mount')
 const webpack = require('webpack')
 const proxyMiddleware = require('http-proxy-middleware')
 const mockMiddleware = require('./mock-middleware')
@@ -22,20 +24,21 @@ const autoOpenBrowser = !!config.dev.autoOpenBrowser
 // https://github.com/chimurai/http-proxy-middleware
 const proxyTable = config.dev.proxyTable || {}
 
-const app = express()
+const app = new Koa()
 const compiler = webpack(webpackConfig)
 
-const devMiddleware = require('webpack-dev-middleware')(compiler, {
+const devMiddleware = require('koa-webpack-dev-middleware')(compiler, {
     publicPath: webpackConfig.output.publicPath,
     quiet: true
 })
 
-const hotMiddleware = require('webpack-hot-middleware')(compiler, {
+const hotMiddleware = require('koa-webpack-hot-middleware')(compiler, {
     log: () => {}
 })
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {
     compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
+        console.log(hotMiddleware)
         hotMiddleware.publish({
             action: 'reload'
         })
@@ -56,7 +59,7 @@ Object.keys(proxyTable).forEach(function (context) {
     app.use(proxyMiddleware(options.filter || context, options))
 })
 // handle fallback for HTML5 history API
-app.use(require('connect-history-api-fallback')())
+app.use(require('koa-connect-history-api-fallback')())
 
 
 // serve webpack bundle output
@@ -69,7 +72,9 @@ app.use(hotMiddleware)
 
 // serve pure static assets
 const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
-app.use(staticPath, express.static('./static'))
+console.log(Koa)
+// staticPath, 
+app.use(mount('/static', koaStatic('./static')))
 
 
 const uri = 'http://localhost:' + port
@@ -83,7 +88,6 @@ console.log('> Starting dev server...')
 devMiddleware.waitUntilValid(() => {
     console.log('> Listening at ' + uri + '\n')
     // when env is testing, don't need open it
-    console.log(uri)
     if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
         opn(uri)
     }
