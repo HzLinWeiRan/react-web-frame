@@ -13,13 +13,13 @@ function root(state = initialState, action) {
         loadChild += 1;
         return {
             ...state,
-            visiable: loadChild !== 0
+            visiable: loadChild !== 0,
         };
     case 'UNLOADING':
         if (loadChild > 0) loadChild -= 1;
         return {
             ...state,
-            visiable: loadChild !== 0
+            visiable: loadChild !== 0,
         };
     default:
         return state;
@@ -27,7 +27,7 @@ function root(state = initialState, action) {
 }
 
 const rootReducer = combineReducers({
-    root
+    root,
 });
 
 export default rootReducer;
