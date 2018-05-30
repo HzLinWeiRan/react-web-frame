@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 // import ReactDom from 'react-dom';
 
 // console.log(styles);
-console.log(PropTypes);
 function mapStateToProps(state) {
     return state;
 }
@@ -26,8 +25,7 @@ export default class App extends Component {
     // const t2 = '123';
     render() {
         const { test } = this.props;
-        console.log(test);
-        return <div>1231212{this.state.d}</div>;
+        return <div>1231212{this.state.d}{test}</div>;
     }
 }
 

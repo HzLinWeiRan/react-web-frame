@@ -22,9 +22,8 @@ i18next
         },
     }, (err, t) => {
         if (err) {
-            console.error(t);
-            return console.error(err);
+            return err;
         }
-        return '';
+        return t;
     });
 
