@@ -8,7 +8,7 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const loadMinified = require('./load-minified')
@@ -20,14 +20,13 @@ const webpackConfig = merge(baseWebpackConfig, {
     module: {
         rules: [{
             test: /\.scss$/,
-            use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: [
-                    'css-loader?minimize=true&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-                    'sass-loader',
-                    'postcss-loader'
-                ]
-            }),
+            use: [
+                'style-loader',
+                MiniCssExtractPlugin.loader,
+                'css-loader?minimize=true&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+                'sass-loader',
+                'postcss-loader'
+            ],
             include: [utils.resolve('src'), utils.resolve('test')]
         }]
     },
@@ -35,7 +34,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     output: {
         path: config.build.assetsRoot,
         filename: utils.assetsPath('js/[name].[chunkhash].js'),
-        chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+        chunkFilename: utils.assetsPath('js/[name].[chunkhash].js')
     },
     plugins: [
         // http://vuejs.github.io/vue-loader/en/workflow/production.html
@@ -47,8 +46,9 @@ const webpackConfig = merge(baseWebpackConfig, {
         }),
         new UglifyJsPlugin(),
         // extract css into its own file
-        new ExtractTextPlugin({
+        new MiniCssExtractPlugin({
             filename: utils.assetsPath('css/[name].[hash].css')
+            // filename: "[name].css"
         }),
         // Compress extracted CSS. We are using this plugin so that possible
         // duplicated CSS from different components can be deduped.
@@ -114,14 +114,28 @@ const webpackConfig = merge(baseWebpackConfig, {
          })
     ],
     optimization: {
-        runtimeChunk: true,
-        splitChunks: {
-            chunks: 'initial',
-            cacheGroups: {
-                default: false,
-                vendors: false,
-            },
+        runtimeChunk: {
+            name: 'manifest'
         },
+        splitChunks: {
+            chunks: "async",
+            minSize: 30000,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            name: true,
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendors",
+                    chunks: "all"
+                }
+            }
+        },
+    },
+    performance: {
+        hints: false
     }
 })
 

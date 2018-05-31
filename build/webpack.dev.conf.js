@@ -19,7 +19,7 @@ module.exports = merge(baseWebpackConfig, {
             test: /\.scss$/,
             use: [
                 'style-loader?sourceMap',
-                'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+                'css-loader?importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
                 'sass-loader?sourceMap',
                 'postcss-loader?sourceMap'
             ],
