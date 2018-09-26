@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "lint": "lint",
-    "lint:js": "eslint --ext .js src",
+    "lint": "eslint --ext .js src",
     "new": "node build/fs-init.js",
     "precommit": "npm run lint"
   },

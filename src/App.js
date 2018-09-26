@@ -11,7 +11,7 @@ import RouteWithSubRoutes from './components/routeWithSubRoutes';
 function App() {
     return (
         <div>
-               <Router>
+              <Router>
                 <Switch>
                     {routes.map(route => <RouteWithSubRoutes {...route} key={route.path} />)}
                     <Redirect from="/news" to="/news/features" />
