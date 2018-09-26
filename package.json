@@ -8,8 +8,12 @@
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "NODE_ENV=production eslint --ext .js src",
-    "new": "node build/fs-init.js",
-    "precommit": "npm run lint"
+    "new": "node build/fs-init.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "dependencies": {
     "axios": "^0.16.1",
