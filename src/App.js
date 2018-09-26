@@ -8,6 +8,8 @@ import routes from './routes';
 import RouteWithSubRoutes from './components/routeWithSubRoutes';
 // import Loading from './components/loading';
 
+console.log(1);
+
 function App() {
     return (
         <div>
